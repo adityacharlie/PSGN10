@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'PSGN10.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'psgn10',
-        'USER': 'adityakotakonda',
+        'NAME': '',
+        'USER': '',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': '',
         'CONN_MAX_AGE': 30,
         'OPTIONS': {
             'sslmode': 'disable',
@@ -128,3 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+try:
+    from .local_settings import *
+except ImportError as e:
+    if 'local_settings' not in str(e):
+        raise
