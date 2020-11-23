@@ -31,6 +31,8 @@ ALLOWED_HOSTS = '*',
 # Application definition
 
 INSTALLED_APPS = [
+    'custom_swagger',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
 
     # Apps
     'core',
+    'rest_framework_swagger',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +75,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'PSGN10.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
+
 
 
 # Database
