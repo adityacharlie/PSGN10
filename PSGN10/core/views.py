@@ -1,6 +1,10 @@
-from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView
-from core.models import AwayStats, HomeStats
-from core.serializers import AwayStatsSerializer, HomeStatsSerializer
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView,\
+    CreateAPIView
+from rest_framework.response import Response
+from rest_framework import status
+from core.models import AwayStats, HomeStats, Player
+from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
+    PlayerAddSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin
 
 
@@ -34,3 +38,17 @@ class AwayStatsDetails(AwayStatsAccessMixin, RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return super().get_queryset()
+
+
+class AddPlayer(CreateAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerAddSerializer
+    pagination_class = None
+
+    def create(self, request, * args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)
