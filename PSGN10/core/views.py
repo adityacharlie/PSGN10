@@ -5,7 +5,8 @@ from rest_framework import status
 from core.models import AwayStats, HomeStats, Player
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
     PlayerAddSerializer
-from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin
+from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
+    PlayerAccessMixin
 
 
 class HomeStatsLIst(ListAPIView):
@@ -52,3 +53,9 @@ class AddPlayer(CreateAPIView):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data,
                         status=status.HTTP_201_CREATED, headers=headers)
+
+
+class EditViewPlayer(PlayerAccessMixin, RetrieveUpdateDestroyAPIView):
+
+    def get_querset(self):
+        return super().get_queryset()

@@ -9,4 +9,5 @@ urlpatterns = [
     path('awaystats/<int:pk>/', views.AwayStatsDetails.as_view(), name='away_stats_details'),
 
     path('player/add/', views.AddPlayer.as_view(), name='add_player'),
+    path('player/<int:pk>/', views.EditViewPlayer.as_view(), name='edit_view_player'),
 ]

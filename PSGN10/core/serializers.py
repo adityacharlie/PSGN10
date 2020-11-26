@@ -43,3 +43,9 @@ class PlayerAddSerializer(serializers.ModelSerializer):
         player.save()
 
         return player
+
+
+class PlayerEditSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+        fields = '__all__'
