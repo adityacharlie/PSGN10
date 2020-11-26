@@ -46,6 +46,9 @@ class PlayerAddSerializer(serializers.ModelSerializer):
 
 
 class PlayerEditSerializer(serializers.ModelSerializer):
+    home_stats = HomeStatsSerializer()
+    away_stats = AwayStatsSerializer()
+
     class Meta:
         model = Player
         fields = '__all__'
