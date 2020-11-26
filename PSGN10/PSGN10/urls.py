@@ -11,5 +11,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('awaystats/', include('core.urls')),
+    path('player/', include('core.urls')),
+    prefix_default_language=False,
 )
