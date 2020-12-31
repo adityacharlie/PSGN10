@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # Apps
     'core',
+    'accounts',
     'rest_framework_swagger',
     'import_export',
 ]
@@ -98,6 +99,8 @@ DATABASES = {
         },
     },
 }
+
+AUTH_USER_MODEL = 'accounts.Customer'
 
 
 # Password validation
