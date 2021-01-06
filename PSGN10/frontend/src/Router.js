@@ -1,4 +1,5 @@
 import LoginScreen from './screens/LoginScreen'
+import AfterLoggedScreen from './screens/AfterLoggedScreen'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
@@ -7,6 +8,7 @@ const AppRouter = props => {
         <Router>
         	<div>
         		<Route path="/" exact component={LoginScreen} />
+                <Route path="/afterlogged" exact component={AfterLoggedScreen} />
         	</div>
         </Router>
     )

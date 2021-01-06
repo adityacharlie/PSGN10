@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="logo" width="165" height="26.613" viewBox="0 0 165 26.613">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:rgba(0,0,0,0)}.cls-3{clip-path:url(#clip-path)}.cls-4{fill:#05183d}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Clip_2" d="M0 0h26.685v26.488H0z" class="cls-1" data-name="Clip 2"/>
+        </clipPath>
+    </defs>
+    <path id="logo_background" d="M0 0h165v26.613H0z" class="cls-2" data-name="logo background"/>
+    <g id="Group_5" data-name="Group 5" transform="translate(.01 .115)">
+        <path id="Clip_2-2" d="M0 0h26.685v26.488H0z" class="cls-1" data-name="Clip 2"/>
+        <g id="Group_5-2" class="cls-3" data-name="Group 5">
+            <path id="Fill_1" d="M0 26.407h1.781V0H0z" class="cls-4" data-name="Fill 1" transform="translate(0 .081)"/>
+            <path id="Fill_3" d="M0 26.407h1.791V0H0z" class="cls-4" data-name="Fill 3" transform="translate(3.001 .081)"/>
+            <path id="Fill_4" d="M20.836 26.5l-2.542-.01-11.95-11.973-.952.953L16.4 26.5l-2.613-.081-9.66-9.678-.85.851 8.891 8.908H9.522L2 18.873l-.206.207v1.456L7.742 26.5H5.21l-3.42-3.426V26.5H0V.081h1.791v3.345L5.21 0h2.532L1.791 5.963v1.456L2 7.625 9.522 0h2.646L3.277 8.907l.85.852 9.66-9.678L16.4 0 5.392 11.027l.952.953L18.294.01 20.836 0 7.61 13.249 20.836 26.5zM1.909 14.517l-.118.118V16.1l.22.22.85-.852zM4.127 12.3l-.952.953.952.953.952-.953zM2.01 10.176l-.22.22v1.466l.118.118.952-.953z" class="cls-4" data-name="Fill 4" transform="translate(5.85)"/>
+        </g>
+    </g>
+    <path id="Fill_6" d="M0 6.051h.69V0H0z" class="cls-4" data-name="Fill 6" transform="translate(89.698 20.41)"/>
+    <path id="Fill_7" d="M.716 0L4.34 4.919V0h.682v6.051h-.707L.69 1.141v4.91H0V0h.716" class="cls-4" data-name="Fill 7" transform="translate(96.534 20.41)"/>
+    <path id="Fill_8" d="M3.158.631A2.42 2.42 0 0 0 .7 3.034a2.433 2.433 0 0 0 2.458 2.412 2.631 2.631 0 0 0 1.787-.726l.423.458a3.317 3.317 0 0 1-2.244.916A3.068 3.068 0 0 1 0 3.034 3.074 3.074 0 0 1 3.15 0a3.262 3.262 0 0 1 2.209.882l-.414.5A2.563 2.563 0 0 0 3.158.631" class="cls-4" data-name="Fill 8" transform="translate(107.141 20.393)"/>
+    <path id="Fill_9" d="M0 .813h46.925V0H0z" class="cls-4" data-name="Fill 9" transform="translate(35.871 23.583)"/>
+    <path id="Fill_10" d="M0 .813h46.925V0H0z" class="cls-4" data-name="Fill 10" transform="translate(118.075 23.583)"/>
+    <path id="Fill_11" d="M11.626 17.2L5.3 9.018 1.962 12.7v4.5H0V0h1.962v10l9.222-10h2.33L6.7 7.494l7.329 9.706h-2.4" class="cls-4" data-name="Fill 11" transform="translate(36.231 .29)"/>
+    <path id="Fill_12" d="M17.415 17.2H15.28l-1.938-4.4H4l-1.915 4.4H0L7.7 0h2.037l7.677 17.2zM8.658 2.138l-3.851 8.845h7.751z" class="cls-4" data-name="Fill 12" transform="translate(50.873 .29)"/>
+    <path id="Fill_13" d="M0 17.2h1.962V0H0z" class="cls-4" data-name="Fill 13" transform="translate(70.986 .29)"/>
+    <path id="Fill_14" d="M13.171 0v1.818H7.554V17.2H5.592V1.818H0V0h13.171" class="cls-4" data-name="Fill 14" transform="translate(75.818 .29)"/>
+    <path id="Fill_15" d="M9 17.323a9.394 9.394 0 0 1-3.528-.675A8.877 8.877 0 0 1 2.615 14.8a8.508 8.508 0 0 1 0-12.292A8.868 8.868 0 0 1 5.474.671a9.575 9.575 0 0 1 7.041 0 8.856 8.856 0 0 1 2.851 1.839 8.526 8.526 0 0 1 0 12.292 8.865 8.865 0 0 1-2.851 1.847A9.329 9.329 0 0 1 9 17.323zm0-15.5a6.933 6.933 0 0 0-7.014 6.826A6.956 6.956 0 0 0 9 15.529a6.931 6.931 0 0 0 6.966-6.88A6.907 6.907 0 0 0 9 1.818z" class="cls-4" data-name="Fill 15" transform="translate(89.112 .241)"/>
+    <path id="Fill_16" d="M2.036 0l10.3 13.981V0h1.938v17.2h-2.01L1.962 3.243V17.2H0V0h2.036" class="cls-4" data-name="Fill 16" transform="translate(110.672 .29)"/>
+    <path id="Fill_17" d="M13.588 8.846h1.741v6.241a10.574 10.574 0 0 1-6.377 2.236A8.762 8.762 0 0 1 0 8.649 8.782 8.782 0 0 1 9.05 0a9.711 9.711 0 0 1 6.328 2.359L14.25 3.784a7.882 7.882 0 0 0-5.2-1.99 6.933 6.933 0 0 0-7.063 6.855 6.959 6.959 0 0 0 7.088 6.88 8.2 8.2 0 0 0 4.513-1.45V8.846" class="cls-4" data-name="Fill 17" transform="translate(128.552 .241)"/>
+    <path id="Fill_18" d="M9 17.323a9.394 9.394 0 0 1-3.528-.675A8.878 8.878 0 0 1 2.615 14.8a8.508 8.508 0 0 1 0-12.292A8.869 8.869 0 0 1 5.474.671a9.575 9.575 0 0 1 7.041 0 8.856 8.856 0 0 1 2.851 1.839 8.526 8.526 0 0 1 0 12.292 8.865 8.865 0 0 1-2.851 1.847A9.329 9.329 0 0 1 9 17.323zm0-15.5a6.933 6.933 0 0 0-7.013 6.826A6.956 6.956 0 0 0 9 15.529a6.931 6.931 0 0 0 6.966-6.88A6.907 6.907 0 0 0 9 1.818z" class="cls-4" data-name="Fill 18" transform="translate(147.022 .241)"/>
+</svg>
