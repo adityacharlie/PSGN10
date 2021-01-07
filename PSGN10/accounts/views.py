@@ -16,12 +16,14 @@ class Login(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        email = serializer.validated_data.get('email')
+        username = serializer.validated_data.get('username')
         password = serializer.validated_data.get('password')
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
+        print(user)
         if not user or not user.is_active:
             return HttpResponseBadRequest(
                 content='Could not login user'
             )
         login(request, user)
         return Response(CustomerSerializer(request.user).data)
+

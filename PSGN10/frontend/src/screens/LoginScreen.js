@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { getCookie, getTrans } from '../utils'
 import AuthWrapper from '../wrappers/AuthWrapper/AuthWrapper'
 import LoginForm from '../forms/LoginForm'
+import NewLoginForm from '../forms/NewLoginForm'
 
 class LoginScreen extends PureComponent {
 	componentDidMount() {
@@ -16,7 +17,7 @@ class LoginScreen extends PureComponent {
 	render() {
         return (
             <AuthWrapper title={getTrans('Login')}>
-                <LoginForm />
+                <NewLoginForm />
             </AuthWrapper>
         )
     }	
