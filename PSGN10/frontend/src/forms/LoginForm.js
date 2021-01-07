@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik'
 import RenderField from '../form-elements/RenderField'
 import { getCookie, getTrans } from '../utils'
 import axios from 'axios'
-import { LOGIN, USER_TYPE } from '../api'
+import { LOGIN } from '../api'
 import { LOGIN_USER } from '../actions/types'
 import store from '../Store'
 import { withRouter } from 'react-router-dom'
@@ -15,12 +15,12 @@ import { withRouter } from 'react-router-dom'
 
 const fields = [
     {
-        label: 'Email',
+        label: 'Username',
         value: '',
-        name: 'email',
+        name: 'username',
         component: 'charField',
-        placeholder: 'Enter your email',
-        type: 'email',
+        placeholder: 'Enter your Username',
+        type: 'text',
         required: true,
     },
     {
@@ -58,24 +58,8 @@ class LoginForm extends PureComponent {
                 const token = getCookie('csrftoken')
                 axios.defaults.headers.common['X-CSRFToken'] = token
 
-                // axios.get(USER_TYPE).then(userTypeResponse => {
-                //     axios.get('/accounts/auth/user/').then(userResponse => {
-                //         const user = {
-                //             ...userResponse.data,
-                //             ...userTypeResponse.data,
-                //         }
-                //         const from = dotProp.get(location, 'state.from')
-                //         store.dispatch({
-                //             type: LOGIN_USER,
-                //             payload: user,
-                //         })
-                //         if (from) {
-                //             history.push(from)
-                //         } else {
-                //             redirectUser(user, history)
-                //         }
-                //     })
-                // })
+                history.push(`/afterlogged`)
+                
             })
             .catch(error => {
                 console.log('login error', error.response)

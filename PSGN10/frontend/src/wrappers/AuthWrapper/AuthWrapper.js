@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { getCookie, getTrans } from '../../utils'
 import Logo from '../../components/Logo/Logo'
 import axios from 'axios'
+import 'antd/dist/antd.css';
 
 class AuthWrapper extends PureComponent {
     componentDidMount() {
@@ -18,6 +19,7 @@ class AuthWrapper extends PureComponent {
         const { title } = this.props
 
         return (
+
             <Wrapper>
                 <AuthBody>
                     <div className="text-center mb-3">
@@ -28,7 +30,7 @@ class AuthWrapper extends PureComponent {
                         {this.props.children}
                     </Inner>
                     <Footer>
-                        <span className="mr-3">{getTrans('© 2018 Kaitongo Inc.')}</span>
+                        <span className="mr-3">{getTrans('© 2020 Charlie Digital Inc.')}</span>
                         <Link to="/terms" className="mr-3">
                             {getTrans('Terms')}
                         </Link>

@@ -9,7 +9,7 @@ class Logo extends PureComponent {
 
         return (
             <Link to="/">
-                <img src={white ? logoWhite : logo} alt="logo" />
+                {/*<img src={white ? logoWhite : logo} alt="logo" />*/}
             </Link>
         )
     }
