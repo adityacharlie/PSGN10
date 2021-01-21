@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework_swagger',
     'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
