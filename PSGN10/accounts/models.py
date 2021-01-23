@@ -1,8 +1,9 @@
 from django.contrib.auth.models import AbstractUser
+from accounts.mixins import CustomerMixin
 
 
-class Customer(AbstractUser):
-    user_type = 'user'
+class Customer(CustomerMixin, AbstractUser):
+    user_type = 'customer'
 
     class Meta:
         verbose_name = 'customer'
