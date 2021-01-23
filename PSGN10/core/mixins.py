@@ -1,6 +1,7 @@
 from .models import AwayStats, HomeStats, Player
 from .serializers import AwayStatsSerializer, HomeStatsSerializer,\
     PlayerEditSerializer
+from accounts.permissions import IsCustomer
 
 
 class AwayStatsAccessMixin(object):
@@ -24,6 +25,7 @@ class HomeStatsAccessMixin(object):
 class PlayerAccessMixin(object):
     queryset = Player.objects.all()
     serializer_class = PlayerEditSerializer
+    permission_classes = IsCustomer,
 
     def get_queryset(self, **kwargs):
         qs = super().get_queryset(**kwargs)
