@@ -95,3 +95,17 @@ class Player(models.Model):
     home_stats = models.OneToOneField(HomeStats, on_delete=models.CASCADE)
     away_stats = models.OneToOneField(AwayStats, on_delete=models.CASCADE)
 
+
+class Team(models.Model):
+    name = models.CharField(max_length=100, blank=True,
+                            verbose_name='Name')
+    fullname = models.CharField(max_length=100, blank=True,
+                                verbose_name='Full Name')
+    shortname = models.CharField(max_length=100, blank=True,
+                                 verbose_name='Short Name')
+    founded = models.DateField(auto_now_add=False, blank=True)
+    ground = models.CharField(max_length=100, blank=True,
+                              verbose_name='Ground')
+    ground_capacity = models.IntegerField(
+        blank=True, verbose_name='Ground Capacity')
+
