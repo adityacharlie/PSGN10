@@ -134,3 +134,9 @@ class Player(models.Model):
                                    verbose_name='Nationality')
     home_stats = models.OneToOneField(HomeStats, on_delete=models.CASCADE)
     away_stats = models.OneToOneField(AwayStats, on_delete=models.CASCADE)
+
+
+class Fixtures(models.Model):
+    teamA = models.ForeignKey(LeagueTeam, related_name='TeamA', on_delete=models.CASCADE)
+    teamB = models.ForeignKey(LeagueTeam, related_name='TeamB', on_delete=models.CASCADE)
+    time = models.DateTimeField(blank=True)
