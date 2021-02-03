@@ -2,11 +2,11 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView,\
     CreateAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from core.models import AwayStats, HomeStats, Player
+from core.models import AwayStats, HomeStats, Player, LeagueTeam, League
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
-    PlayerAddSerializer, PlayerEditSerializer
+    PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, LeagueSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
-    PlayerAccessMixin
+    PlayerAccessMixin, LeagueAccessMixin
 
 
 class HomeStatsLIst(ListAPIView):
@@ -57,7 +57,7 @@ class AddPlayer(CreateAPIView):
 
 class EditViewPlayer(PlayerAccessMixin, RetrieveUpdateDestroyAPIView):
 
-    def get_querset(self):
+    def get_queryset(self):
         return super().get_queryset()
 
 
@@ -68,3 +68,37 @@ class AllPlayerList(ListAPIView):
 
     def get_queryset(self):
         return super().get_queryset()
+
+
+class AddLeague(CreateAPIView):
+    queryset = League.objects.all()
+    serializer_class = LeagueSerializer
+    pagination_class = None
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)
+
+
+class EditViewLeague(LeagueAccessMixin, RetrieveUpdateDestroyAPIView):
+
+    def get_queryset(self):
+        return super().get_queryset()
+
+
+class AddLeagueTeam(CreateAPIView):
+    queryset = LeagueTeam.objects.all()
+    serializer_class = LeagueTeamSerializer
+    pagination_class = None
+
+    def create(self, request, * args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)

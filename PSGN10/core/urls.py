@@ -12,4 +12,9 @@ urlpatterns = [
     path('<int:pk>/', views.EditViewPlayer.as_view(), name='edit_view_player'),
     path('all/', views.AllPlayerList.as_view(), name='list_all_players'),
 
+    path('league/add/', views.AddLeague.as_view(), name='add_league'),
+    path('league/<int:pk>/', views.EditViewLeague.as_view(), name='edit_view_league'),
+    path('leagueteam/add/', views.AddLeagueTeam.as_view(), name='add_league_team'),
+    # path('leagueteam/all/', views.AllLeagueTeamList.as_view(), name='list_all_league_teams'),
+
 ]

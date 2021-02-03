@@ -1,4 +1,4 @@
-from core.models import AwayStats, HomeStats, Player
+from core.models import AwayStats, HomeStats, Player, LeagueTeam, League
 from rest_framework import serializers
 
 
@@ -51,4 +51,16 @@ class PlayerEditSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
+        fields = '__all__'
+
+
+class LeagueTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LeagueTeam
+        fields = '__all__'
+
+
+class LeagueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = League
         fields = '__all__'
