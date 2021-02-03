@@ -1,6 +1,6 @@
-from .models import AwayStats, HomeStats, Player, League
+from .models import AwayStats, HomeStats, Player, League, LeagueTeam
 from .serializers import AwayStatsSerializer, HomeStatsSerializer,\
-    PlayerEditSerializer, LeagueSerializer
+    PlayerEditSerializer, LeagueSerializer, LeagueTeamSerializer
 from accounts.permissions import IsCustomer
 
 
@@ -29,6 +29,15 @@ class LeagueAccessMixin(object):
     def get_queryset(self, **kwargs):
         qs = super().get_queryset(**kwargs)
         return qs
+
+class LeagueTeamAccessMixin(object):
+    queryset = LeagueTeam.objects.all()
+    serializer_class = LeagueTeamSerializer
+
+    def get_queryset(self, **kwargs):
+        qs = super().get_queryset(**kwargs)
+        return qs
+
 
 class PlayerAccessMixin(object):
     queryset = Player.objects.all()

@@ -6,7 +6,7 @@ from core.models import AwayStats, HomeStats, Player, LeagueTeam, League
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
     PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, LeagueSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
-    PlayerAccessMixin, LeagueAccessMixin
+    PlayerAccessMixin, LeagueAccessMixin, LeagueTeamAccessMixin
 
 
 class HomeStatsLIst(ListAPIView):
@@ -102,3 +102,18 @@ class AddLeagueTeam(CreateAPIView):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data,
                         status=status.HTTP_201_CREATED, headers=headers)
+
+
+class EditViewLeagueTeam(LeagueTeamAccessMixin, RetrieveUpdateDestroyAPIView):
+
+    def get_queryset(self):
+        return super().get_queryset()
+
+
+class AllLeagueTeamList(ListAPIView):
+    queryset = LeagueTeam.objects.all()
+    serializer_class = LeagueTeamSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return super().get_queryset()
