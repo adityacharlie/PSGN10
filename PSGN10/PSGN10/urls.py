@@ -12,6 +12,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('accounts/', include('accounts.urls')),
-    path('player/', include('core.urls')),
+    path('core/', include('core.urls')),
     prefix_default_language=False,
 )
