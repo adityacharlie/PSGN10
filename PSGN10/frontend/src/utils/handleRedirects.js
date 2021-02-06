@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const redirectUser = (user, history) => {
+    console.log(user,history);
     switch (user.user_type) {
         case 'analyst':
             axios.get(`/accounts/analyst/${user.id}/groups/`).then(response => {
@@ -9,7 +10,7 @@ export const redirectUser = (user, history) => {
             })
             break
 
-        case 'user':
+        case 'customer':
                 history.push('/afterlogged')
             break
 

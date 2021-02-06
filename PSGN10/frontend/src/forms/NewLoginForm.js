@@ -4,32 +4,31 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { getCookie, getTrans } from '../utils'
 import axios from 'axios'
-import { LOGIN } from '../api'
+import { LOGIN, USER_TYPE} from '../api'
+import dotProp from 'dot-prop-immutable'
+import { useHistory } from 'react-router-dom'
 
 export default function NewLoginForm(props){
 
-  const { history, location } = props
-
+  const history = useHistory()
   const [loginErrorMsg, setloginErrorMsg] = useState('')
-
-  console.log(history,location);
   
   const onFinish = (values) => {
-    // console.log('Received values of form: ', values);
+      const { location } = props
 
     return axios
             .post(LOGIN, values)
             .then(response => {
-                console.log(response)
                 const token = getCookie('csrftoken')
                 axios.defaults.headers.common['X-CSRFToken'] = token
 
-                history.push(`/afterlogged`)
+                history.push('/afterlogged')
+
                 
             })
             .catch(error => {
-                console.log(error)
-                console.log('login error', error.response)
+                // console.log(error)
+                // console.log('login error', error.response)
                 
                 setloginErrorMsg(getTrans('Could not login with provided username and password.'))
                 
