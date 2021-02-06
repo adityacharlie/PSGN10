@@ -15,5 +15,5 @@ class Customer(CustomerMixin, AbstractUser):
         ) if self.first_name or self.last_name else self.email
 
     def get_user_type(self):
-        return 'user'
+        return 'customer'
 

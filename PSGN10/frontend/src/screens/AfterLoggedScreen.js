@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import { getCookie, getTrans } from '../utils'
+import BaseScreen from "./BaseScreen";
 
 
 class LoginScreen extends PureComponent {
@@ -10,9 +11,14 @@ class LoginScreen extends PureComponent {
 
 	render() {
         return (
-            <span className="mr-3">{getTrans('Succesfully Logged')}</span>
+            <BaseScreen>
+                <div>
+                    <span className="mr-3">{getTrans('Succesfully Logged')}</span>
+                </div>
+            </BaseScreen>
+
         )
-    }	
+    }
 }
 
 
