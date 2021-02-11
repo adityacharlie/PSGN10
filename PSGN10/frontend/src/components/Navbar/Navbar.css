@@ -1,0 +1,31 @@
+.ant-layout-footer{
+    text-align: center;
+    padding: 24px 50px;
+    color: #FFFFFF;
+    font-size: 14px;
+    background-color: #001529;
+}
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+    background-color: #a6df58;
+}
+
+.ant-layout-header {
+    background: #a6df58;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item {
+    color: #397112;
+    font-weight: bold;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    background-color: #a6df58;
+    box-shadow: 1px 0px 10px #397112;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+    background-color: #a6df58;
+}
+
+.ant-breadcrumb{
+    text-align: initial;
+}
