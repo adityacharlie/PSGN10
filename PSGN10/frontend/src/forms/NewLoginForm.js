@@ -5,8 +5,9 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { getCookie, getTrans } from '../utils'
 import axios from 'axios'
 import { LOGIN, USER_TYPE} from '../api'
-import dotProp from 'dot-prop-immutable'
 import { useHistory } from 'react-router-dom'
+import store from "../Store";
+import {LOGIN_USER} from "../actions/types";
 
 export default function NewLoginForm(props){
 
@@ -14,7 +15,6 @@ export default function NewLoginForm(props){
   const [loginErrorMsg, setloginErrorMsg] = useState('')
   
   const onFinish = (values) => {
-      const { location } = props
 
     return axios
             .post(LOGIN, values)
@@ -22,14 +22,26 @@ export default function NewLoginForm(props){
                 const token = getCookie('csrftoken')
                 axios.defaults.headers.common['X-CSRFToken'] = token
 
-                history.push('/afterlogged')
+                axios.get(USER_TYPE).then(userTypeResponse => {
+                    axios.get('/accounts/auth/user/').then(userResponse => {
+                      const user = {
+						...userResponse.data,
+						...userTypeResponse.data,
+                      }
+                      console.log(user);
+                      store.dispatch({
+						type: LOGIN_USER,
+						payload: user,
+					  })
 
-                
+                      history.push('/afterlogged')
+
+                    })
+                })
+
             })
             .catch(error => {
-                // console.log(error)
-                // console.log('login error', error.response)
-                
+
                 setloginErrorMsg(getTrans('Could not login with provided username and password.'))
                 
             })
@@ -77,16 +89,16 @@ export default function NewLoginForm(props){
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="">
+        <a className="login-form-forgot" href="/">
           Forgot password
         </a>
       </Form.Item>
-
+      <div className="input-feedback">{loginErrorMsg}</div>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="">register now!</a>
+        Or <a href="/">register now!</a>
       </Form.Item>
     </Form>
   )
