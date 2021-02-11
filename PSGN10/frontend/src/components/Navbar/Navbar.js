@@ -1,8 +1,9 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { logoutUser } from "../../actions/AuthActions";
+import { Layout, Breadcrumb } from 'antd';
 import './Navbar.css';
+import { Menu,Button } from 'antd';
+import { logoutUser } from '../../actions/AuthActions'
 
 const { Header, Content, Footer } = Layout;
 
@@ -22,6 +23,21 @@ class Navbar extends PureComponent {
             <Menu.Item key="fixtures">Fixtures</Menu.Item>
             <Menu.Item key="team_statistics">Team Statistics</Menu.Item>
             <Menu.Item key="player_statistics">Player Statistics</Menu.Item>
+              {isLoggedIn ? (
+                  <Menu.Item key="logout">
+                      <Button type="primary"  onClick={ logoutUser }>
+                          Logout
+                      </Button>
+                    </Menu.Item>
+              ) : (
+
+                <Menu.Item key="login">
+                    <a href="/">
+                        Login
+                    </a>
+                </Menu.Item>
+
+              )}
           </Menu>
         </Header>
         <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
