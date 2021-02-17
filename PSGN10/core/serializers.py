@@ -1,4 +1,5 @@
-from core.models import AwayStats, HomeStats, Player, LeagueTeam, League
+from core.models import AwayStats, HomeStats, Player, LeagueTeam, \
+    League, Fixtures, Season
 from rest_framework import serializers
 
 
@@ -15,11 +16,11 @@ class HomeStatsSerializer(serializers.ModelSerializer):
 
 
 class PlayerAddSerializer(serializers.ModelSerializer):
-    '''
+    """
         Good example for Nested serializers
         Adding player with home and away stats at the same time
 
-    '''
+    """
     home_stats = HomeStatsSerializer()
     away_stats = AwayStatsSerializer()
 
@@ -63,4 +64,31 @@ class LeagueTeamSerializer(serializers.ModelSerializer):
 class LeagueSerializer(serializers.ModelSerializer):
     class Meta:
         model = League
+        fields = '__all__'
+
+
+class CreateFixturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fixtures
+        fields = '__all__'
+
+
+class FixturesListSerializer(serializers.ModelSerializer):
+    key = serializers.SerializerMethodField()
+    season = serializers.StringRelatedField()
+    teamA = serializers.StringRelatedField()
+    teamB = serializers.StringRelatedField()
+
+    class Meta:
+        model = Fixtures
+        fields = '__all__'
+
+    @staticmethod
+    def get_key(instance):
+        return instance.id
+
+
+class CreateSeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Season
         fields = '__all__'

@@ -28,13 +28,12 @@ export default function NewLoginForm(props){
 						...userResponse.data,
 						...userTypeResponse.data,
                       }
-                      console.log(user);
                       store.dispatch({
 						type: LOGIN_USER,
 						payload: user,
 					  })
 
-                      history.push('/afterlogged')
+                      history.push('/league')
 
                     })
                 })

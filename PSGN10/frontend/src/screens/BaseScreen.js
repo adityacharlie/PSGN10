@@ -8,6 +8,9 @@ class BaseScreen extends PureComponent {
         return (
             <div>
                 <Navbar />
+                <div className="content-wrap">
+                    <div>{this.props.children}</div>
+                </div>
             </div>
         )
     }

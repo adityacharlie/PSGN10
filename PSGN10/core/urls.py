@@ -18,4 +18,8 @@ urlpatterns = [
     path('leagueteam/<int:pk>/', views.EditViewLeagueTeam.as_view(), name='edit_view_league_team'),
     path('leagueteam/all/', views.AllLeagueTeamList.as_view(), name='list_all_league_teams'),
 
+    path('fixtures/add/', views.AddFixture.as_view(), name='add_fixture'),
+    path('fixtures/all/', views.AllFixtures.as_view(), name='all_fixtures'),
+    path('season/add/', views.AddSeason.as_view(), name='add_season'),
+
 ]

@@ -102,6 +102,9 @@ class LeagueTeam(Team):
                                  verbose_name='President')
     league = models.ForeignKey(League, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class NationalTeam(Team):
     association = models.CharField(max_length=100, blank=True,
@@ -139,6 +142,8 @@ class Player(models.Model):
 class Season(models.Model):
     season = models.CharField(max_length=100, blank=True,
                               verbose_name='Season')
+    def __str__(self):
+        return ''.join(self.season)
 
 
 class Fixtures(models.Model):
