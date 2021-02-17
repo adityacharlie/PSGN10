@@ -46,11 +46,8 @@ class Navbar extends PureComponent {
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-            Content
-          </div>
         </Content>
-        <Footer>Data sources - Getty Images. Copyright © 2021 CharlieDigital.com</Footer>
+        {/*<Footer>Data sources - Getty Images. Copyright © 2021 CharlieDigital.com</Footer>*/}
       </Layout>
     );
   }

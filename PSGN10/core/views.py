@@ -2,9 +2,12 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView,\
     CreateAPIView
 from rest_framework.response import Response
 from rest_framework import status
-from core.models import AwayStats, HomeStats, Player, LeagueTeam, League
+from core.models import AwayStats, HomeStats, Player, LeagueTeam, League, \
+    Fixtures, Season
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
-    PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, LeagueSerializer
+    PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, \
+    CreateFixturesSerializer, FixturesListSerializer, LeagueSerializer, \
+    CreateSeasonSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
     PlayerAccessMixin, LeagueAccessMixin, LeagueTeamAccessMixin
 
@@ -111,9 +114,46 @@ class EditViewLeagueTeam(LeagueTeamAccessMixin, RetrieveUpdateDestroyAPIView):
 
 
 class AllLeagueTeamList(ListAPIView):
-    queryset = LeagueTeam.objects.all()
+    queryset = Fixtures.objects.all()
     serializer_class = LeagueTeamSerializer
     pagination_class = None
 
     def get_queryset(self):
         return super().get_queryset()
+
+
+class AddFixture(CreateAPIView):
+    queryset = Fixtures.objects.all()
+    serializer_class = CreateFixturesSerializer
+    pagination_class = None
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)
+
+
+class AllFixtures(ListAPIView):
+    queryset = Fixtures.objects.all()
+    serializer_class = FixturesListSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return super().get_queryset()
+
+
+class AddSeason(CreateAPIView):
+    queryset = Season.objects.all()
+    serializer_class = CreateSeasonSerializer
+    pagination_class = None
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)
