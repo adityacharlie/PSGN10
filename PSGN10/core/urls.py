@@ -21,5 +21,6 @@ urlpatterns = [
     path('fixtures/add/', views.AddFixture.as_view(), name='add_fixture'),
     path('fixtures/all/', views.AllFixtures.as_view(), name='all_fixtures'),
     path('season/add/', views.AddSeason.as_view(), name='add_season'),
+    path('season/all/', views.AllSeasons.as_view(), name='all_seasons'),
 
 ]

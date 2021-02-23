@@ -145,6 +145,15 @@ class AllFixtures(ListAPIView):
         return super().get_queryset()
 
 
+class AllSeasons(ListAPIView):
+    queryset = Season.objects.all()
+    serializer_class = CreateSeasonSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return super().get_queryset()
+
+
 class AddSeason(CreateAPIView):
     queryset = Season.objects.all()
     serializer_class = CreateSeasonSerializer
