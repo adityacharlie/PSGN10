@@ -67,6 +67,10 @@ class LeagueSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AllLeagueSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=100)
+
+
 class CreateFixturesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fixtures
@@ -92,3 +96,11 @@ class CreateSeasonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Season
         fields = '__all__'
+
+
+class AllSeasonSerializer(serializers.Serializer):
+    name = serializers.SerializerMethodField()
+
+    @staticmethod
+    def get_name(instance):
+        return instance.season

@@ -1,20 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import BaseScreen from "./BaseScreen";
+import CustomSelect from "../form-elements/Select";
 import { Table } from "antd";
+import { Row, Col } from 'antd';
 import axios from "axios";
 
 export default function LeagueScreen(props) {
     const [fixtures, setFixtures] = useState([]);
+    const [leagues, setLeagues] = useState([]);
+    const [seasons, setSeasons] = useState([]);
 
     useEffect( () => {
         axios
             .get("/core/fixtures/all/")
             .then(response => {
-                console.log(response.data);
                 setFixtures(response.data)
             })
             .finally(() => {
             })
+        axios
+            .get("/core/season/all/")
+            .then(response => {
+                setSeasons(response.data)
+            })
+            .finally(() => {
+            })
+        axios
+            .get("/core/league/all/")
+            .then(response => {
+                setLeagues(response.data)
+            })
+            .finally(() => {
+            })
+
     }, []);
 
     const columns = [
@@ -38,7 +56,26 @@ export default function LeagueScreen(props) {
     return (
         <BaseScreen>
             <div className="league-header-container">
-                <Table columns={columns} dataSource={fixtures} />
+                <Row>
+                    <Col span={6}>
+
+                    </Col>
+                    <Col span={12}>
+                        <Row>
+                            <Col span={12}>
+                                <CustomSelect options={seasons} placeholder="Select a Season"/>
+                            </Col>
+                            <Col span={12}>
+                                <CustomSelect options={leagues} placeholder="Select a League"/>
+                            </Col>
+                        </Row>
+                        <Table columns={columns} dataSource={fixtures} />
+                    </Col>
+
+                    <Col span={6}>
+
+                    </Col>
+                </Row>
             </div>
         </BaseScreen>
     )
