@@ -2,7 +2,7 @@ import { Select } from 'antd';
 
 export default function CustomSelect(props){
     const { Option } = Select;
-    const { options } = props;
+    const { options, placeholder } = props;
 
     function onChange(value) {
         console.log(`selected ${value}`);
@@ -12,21 +12,19 @@ export default function CustomSelect(props){
         <Select
             showSearch
             style={{ width: 200 }}
-            placeholder="Select a League"
-            optionFilterProp="children"
+            placeholder={placeholder}
             onChange={onChange}
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
-          >
-
-            {
-                options.map(each => {
-                    return (
-                        <Option value="{each.season}">{each.season}</Option>
-                    )
-                })
-            }
-          </Select>
+        >
+        {
+            options.map(each => {
+                return (
+                    <Option key={each.name} value={each.name}>{each.name}</Option>
+                )
+            })
+        }
+        </Select>
     )
 }

@@ -7,7 +7,7 @@ from core.models import AwayStats, HomeStats, Player, LeagueTeam, League, \
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
     PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, \
     CreateFixturesSerializer, FixturesListSerializer, LeagueSerializer, \
-    CreateSeasonSerializer
+    CreateSeasonSerializer, AllLeagueSerializer, AllSeasonSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
     PlayerAccessMixin, LeagueAccessMixin, LeagueTeamAccessMixin
 
@@ -16,9 +16,6 @@ class HomeStatsLIst(ListAPIView):
     queryset = HomeStats.objects.all()
     serializer_class = HomeStatsSerializer
     pagination_class = None
-
-    def get_queryset(self):
-        return super().get_queryset()
 
 
 class HomeStatsDetails(HomeStatsAccessMixin, RetrieveUpdateDestroyAPIView):
@@ -71,6 +68,12 @@ class AllPlayerList(ListAPIView):
 
     def get_queryset(self):
         return super().get_queryset()
+
+
+class AllLeagues(ListAPIView):
+    queryset = League.objects.all()
+    serializer_class = AllLeagueSerializer
+    pagination_class = None
 
 
 class AddLeague(CreateAPIView):
@@ -141,17 +144,11 @@ class AllFixtures(ListAPIView):
     serializer_class = FixturesListSerializer
     pagination_class = None
 
-    def get_queryset(self):
-        return super().get_queryset()
-
 
 class AllSeasons(ListAPIView):
     queryset = Season.objects.all()
-    serializer_class = CreateSeasonSerializer
+    serializer_class = AllSeasonSerializer
     pagination_class = None
-
-    def get_queryset(self):
-        return super().get_queryset()
 
 
 class AddSeason(CreateAPIView):
