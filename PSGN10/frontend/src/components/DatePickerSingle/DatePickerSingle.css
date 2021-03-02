@@ -1,0 +1,35 @@
+.datePicker__outerContainer {
+    border-radius: 2px;
+    border: solid 1px #2682c0;
+    background-color: #ffffff;
+}
+.datePicker__innerContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+.datePicker__leftBox {
+    width: 42px;
+    height: 39px;
+    border-right: solid 1px #2682c0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.datePicker__leftBox img {
+    margin-top: 11px;
+}
+.addNew2__dateDisplay {
+    margin: 0 0 0 23px;
+}
+
+.datePicker__calendarContainer {
+    z-index: 2;
+    position: relative;
+    bottom: 15px;
+}
+
+.height40 {
+    height: 40px;
+}

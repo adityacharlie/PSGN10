@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import BaseScreen from "./BaseScreen";
 import CustomSelect from "../form-elements/Select";
+import DatePickerSingle from '../components/DatePickerSingle/DatePickerSingle'
 import { Table } from "antd";
+import { Typography } from 'antd';
 import { Row, Col } from 'antd';
 import axios from "axios";
 
@@ -9,6 +11,7 @@ export default function LeagueScreen(props) {
     const [fixtures, setFixtures] = useState([]);
     const [leagues, setLeagues] = useState([]);
     const [seasons, setSeasons] = useState([]);
+    const { Title } = Typography;
 
     useEffect( () => {
         axios
@@ -70,6 +73,13 @@ export default function LeagueScreen(props) {
                             </Col>
                         </Row>
                         <Table columns={columns} dataSource={fixtures} />
+                        <div className="">
+                            <Title level={3}>LaLiga Fixtures</Title>
+                        </div>
+
+                        <DatePickerSingle />
+
+
                     </Col>
 
                     <Col span={6}>
