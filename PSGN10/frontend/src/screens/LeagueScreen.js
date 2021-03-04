@@ -38,6 +38,19 @@ export default function LeagueScreen(props) {
 
     }, []);
 
+    const handleFixtureUpdate = (field, data) => {
+        console.log(field, data);
+
+        axios
+            .get("/core/fixtures/all/")
+            .then(response => {
+                setFixtures(response.data)
+            })
+            .finally(() => {
+            })
+
+    }
+
     const columns = [
        {
         title: '',
@@ -66,18 +79,26 @@ export default function LeagueScreen(props) {
                     <Col span={12}>
                         <Row>
                             <Col span={12}>
-                                <CustomSelect options={seasons} placeholder="Select a Season"/>
+                                <CustomSelect options={seasons} placeholder="Select a Season" defaultOpt="2020/2021"/>
                             </Col>
                             <Col span={12}>
-                                <CustomSelect options={leagues} placeholder="Select a League"/>
+                                <CustomSelect options={leagues} placeholder="Select a League" defaultOpt="La Liga"/>
                             </Col>
                         </Row>
-                        <Table columns={columns} dataSource={fixtures} />
+
                         <div className="">
                             <Title level={3}>LaLiga Fixtures</Title>
                         </div>
 
-                        <DatePickerSingle />
+                        <Row>
+                            <Col span={12}>
+                                <DatePickerSingle handleFixtureUpdate={handleFixtureUpdate}/>
+                            </Col>
+                        </Row>
+
+
+                            <Table columns={columns} dataSource={fixtures} />
+
 
 
                     </Col>

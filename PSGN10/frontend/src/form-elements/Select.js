@@ -2,7 +2,7 @@ import { Select } from 'antd';
 
 export default function CustomSelect(props){
     const { Option } = Select;
-    const { options, placeholder } = props;
+    const { options, placeholder, defaultOpt } = props;
 
     function onChange(value) {
         console.log(`selected ${value}`);
@@ -17,6 +17,7 @@ export default function CustomSelect(props){
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
+            defaultValue={defaultOpt}
         >
         {
             options.map(each => {

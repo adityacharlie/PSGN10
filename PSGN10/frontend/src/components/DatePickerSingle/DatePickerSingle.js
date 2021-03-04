@@ -3,6 +3,8 @@ import { Calendar } from 'react-date-range'
 import CalendarIcon from '../../assets/icons/calendar-icon.svg'
 import { getShortDate } from '../../utils/dateHelpers'
 import './DatePickerSingle.css'
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 
 export default function DatePickerSingle(props) {
     const [expanded, setExpanded] = useState(false)
@@ -10,7 +12,7 @@ export default function DatePickerSingle(props) {
 
     const handleDateChange = date => {
         setLocalDate(date)
-        // props.handleFormUpdate('date', date)
+        props.handleFixtureUpdate('date', date)
         setExpanded(false)
     }
 
