@@ -30,9 +30,6 @@ class AwayStatsLIst(ListAPIView):
     serializer_class = AwayStatsSerializer
     pagination_class = None
 
-    def get_queryset(self):
-        return super().get_queryset()
-
 
 class AwayStatsDetails(AwayStatsAccessMixin, RetrieveUpdateDestroyAPIView):
     """ get away stat details / update / delete """
@@ -65,9 +62,6 @@ class AllPlayerList(ListAPIView):
     queryset = Player.objects.all()
     serializer_class = PlayerEditSerializer
     pagination_class = None
-
-    def get_queryset(self):
-        return super().get_queryset()
 
 
 class AllLeagues(ListAPIView):
@@ -120,9 +114,6 @@ class AllLeagueTeamList(ListAPIView):
     queryset = Fixtures.objects.all()
     serializer_class = LeagueTeamSerializer
     pagination_class = None
-
-    def get_queryset(self):
-        return super().get_queryset()
 
 
 class AddFixture(CreateAPIView):
