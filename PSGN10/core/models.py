@@ -125,7 +125,7 @@ class Player(models.Model):
     last_name = models.CharField(max_length=100, blank=True,
                                  verbose_name='Last Name')
     league_team = models.ManyToManyField(LeagueTeam, blank=True)
-    national_team = models.OneToOneField(NationalTeam, on_delete=models.CASCADE)
+    national_team = models.ForeignKey(NationalTeam, on_delete=models.CASCADE)
     shirt_number = models.IntegerField(
         blank=True, verbose_name='Shirt Number')
     height = models.IntegerField(
@@ -135,13 +135,14 @@ class Player(models.Model):
     date_of_birth = models.DateField(blank=True)
     nationality = models.CharField(max_length=100, blank=True,
                                    verbose_name='Nationality')
-    home_stats = models.OneToOneField(HomeStats, on_delete=models.CASCADE)
-    away_stats = models.OneToOneField(AwayStats, on_delete=models.CASCADE)
+    home_stats = models.OneToOneField(HomeStats, on_delete=models.CASCADE, null=True, blank=True)
+    away_stats = models.OneToOneField(AwayStats, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Season(models.Model):
     season = models.CharField(max_length=100, blank=True,
                               verbose_name='Season')
+
     def __str__(self):
         return ''.join(self.season)
 
