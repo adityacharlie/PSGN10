@@ -3,11 +3,12 @@ from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView,\
 from rest_framework.response import Response
 from rest_framework import status
 from core.models import AwayStats, HomeStats, Player, LeagueTeam, League, \
-    Fixtures, Season
+    Fixtures, Season, NationalTeam
 from core.serializers import AwayStatsSerializer, HomeStatsSerializer,\
     PlayerAddSerializer, PlayerEditSerializer, LeagueTeamSerializer, \
     CreateFixturesSerializer, FixturesListSerializer, LeagueSerializer, \
-    CreateSeasonSerializer, AllLeagueSerializer, AllSeasonSerializer
+    CreateSeasonSerializer, AllLeagueSerializer, AllSeasonSerializer, \
+    NationalTeamSerializer
 from core.mixins import AwayStatsAccessMixin, HomeStatsAccessMixin,\
     PlayerAccessMixin, LeagueAccessMixin, LeagueTeamAccessMixin
 
@@ -20,9 +21,7 @@ class HomeStatsLIst(ListAPIView):
 
 class HomeStatsDetails(HomeStatsAccessMixin, RetrieveUpdateDestroyAPIView):
     """ get away stat details / update / delete """
-
-    def get_queryset(self):
-        return super().get_queryset()
+    pass
 
 
 class AwayStatsLIst(ListAPIView):
@@ -33,9 +32,7 @@ class AwayStatsLIst(ListAPIView):
 
 class AwayStatsDetails(AwayStatsAccessMixin, RetrieveUpdateDestroyAPIView):
     """ get away stat details / update / delete """
-
-    def get_queryset(self):
-        return super().get_queryset()
+    pass
 
 
 class AddPlayer(CreateAPIView):
@@ -53,9 +50,7 @@ class AddPlayer(CreateAPIView):
 
 
 class EditViewPlayer(PlayerAccessMixin, RetrieveUpdateDestroyAPIView):
-
-    def get_queryset(self):
-        return super().get_queryset()
+    pass
 
 
 class AllPlayerList(ListAPIView):
@@ -85,9 +80,7 @@ class AddLeague(CreateAPIView):
 
 
 class EditViewLeague(LeagueAccessMixin, RetrieveUpdateDestroyAPIView):
-
-    def get_queryset(self):
-        return super().get_queryset()
+    pass
 
 
 class AddLeagueTeam(CreateAPIView):
@@ -105,14 +98,32 @@ class AddLeagueTeam(CreateAPIView):
 
 
 class EditViewLeagueTeam(LeagueTeamAccessMixin, RetrieveUpdateDestroyAPIView):
-
-    def get_queryset(self):
-        return super().get_queryset()
+    pass
 
 
 class AllLeagueTeamList(ListAPIView):
-    queryset = Fixtures.objects.all()
+    queryset = LeagueTeam.objects.all()
     serializer_class = LeagueTeamSerializer
+    pagination_class = None
+
+
+class AddNationalTeam(CreateAPIView):
+    queryset = NationalTeam.objects.all()
+    serializer_class = NationalTeamSerializer
+    pagination_class = None
+
+    def create(self, request, * args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data,
+                        status=status.HTTP_201_CREATED, headers=headers)
+
+
+class AllNationalTeamList(ListAPIView):
+    queryset = NationalTeam.objects.all()
+    serializer_class = NationalTeamSerializer
     pagination_class = None
 
 
@@ -120,14 +131,6 @@ class AddFixture(CreateAPIView):
     queryset = Fixtures.objects.all()
     serializer_class = CreateFixturesSerializer
     pagination_class = None
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data,
-                        status=status.HTTP_201_CREATED, headers=headers)
 
 
 class AllFixtures(ListAPIView):

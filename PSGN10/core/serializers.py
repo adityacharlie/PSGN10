@@ -1,5 +1,5 @@
 from core.models import AwayStats, HomeStats, Player, LeagueTeam, \
-    League, Fixtures, Season
+    League, Fixtures, Season, NationalTeam
 from rest_framework import serializers
 
 
@@ -15,32 +15,50 @@ class HomeStatsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class LeagueTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LeagueTeam
+        fields = '__all__'
+
+
 class PlayerAddSerializer(serializers.ModelSerializer):
     """
         Good example for Nested serializers
         Adding player with home and away stats at the same time
 
     """
-    home_stats = HomeStatsSerializer()
-    away_stats = AwayStatsSerializer()
+    home_stats = HomeStatsSerializer(required=False, allow_null=True)
+    away_stats = AwayStatsSerializer(required=False, allow_null=True)
 
     class Meta:
         model = Player
         fields = '__all__'
 
     def create(self, validated_data):
+
         home_stats_data = validated_data.pop('home_stats')
         away_stats_data = validated_data.pop('away_stats')
+        league_ids = validated_data.pop('league_team')
+        league_teams = LeagueTeam.objects.filter(pk__in=league_ids)
 
-        player_home_stats, phs = HomeStats.objects.get_or_create(
-            **home_stats_data)
-        player_away_stats, pas = AwayStats.objects.get_or_create(
-            **away_stats_data)
+        if home_stats_data:
+            player_home_stats = HomeStats.objects.create(
+                **home_stats_data)
+        else:
+            player_home_stats = None
+
+        if away_stats_data:
+            player_away_stats = AwayStats.objects.create(
+                **away_stats_data)
+        else:
+            player_away_stats = None
 
         player = Player.objects.create(
             home_stats=player_home_stats,
             away_stats=player_away_stats,
             **validated_data)
+
+        player.league_team.set(league_teams)
         player.save()
 
         return player
@@ -55,9 +73,9 @@ class PlayerEditSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class LeagueTeamSerializer(serializers.ModelSerializer):
+class NationalTeamSerializer(serializers.ModelSerializer):
     class Meta:
-        model = LeagueTeam
+        model = NationalTeam
         fields = '__all__'
 
 
